@@ -5,6 +5,7 @@ import logging
 
 # Constants
 GRID_SIZE = 10
+NUM_PLAYERS = 10
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',
@@ -88,7 +89,7 @@ def start_game(players):
     players[0].hit_event.set()
 
 
-player_names = ['A', 'B', 'C']
+player_names = [chr(65+i) for i in range(NUM_PLAYERS)]
 
 hit_events = [threading.Event() for _ in player_names]
 next_player_lock = threading.Lock()  # Create a lock for updating next player
